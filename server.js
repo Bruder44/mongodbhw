@@ -65,7 +65,17 @@ app.get("/scrape", function(req, res) {
     res.send("Scrape Complete");
   });
 });
-
+// Route for homepage
+app.get("/", function(req, res) {
+    db.ArticlesDB.find({})
+    .then(function(ArticlesDB) {
+        res.json(ArticlesDB);
+        }
+    )
+    .catch(function(err) {
+        res.json(err);
+});
+});
 // Route for retriving articles from the Database
 app.get("/articles", function(req, res) {
   // Grabs every document within the ArticlesDB collection
