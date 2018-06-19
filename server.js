@@ -25,10 +25,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Connects to the Mongo DB
-mongoose.connect("mongodb://localhost/ArticlesDB");
-
+//mongoose.connect("mongodb://localhost/ArticlesDB");
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ArticlesDB";
 // Routing
-
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 // GET route for WorldCupSite
 app.get("/scrape", function(req, res) {
 
