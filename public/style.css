@@ -17,12 +17,13 @@ body { background-color: #2020b9 }
   float: right;
   width: 30%;
   font-family: 'Times New Roman', Times, serif;
-  color: white;
+  color: red;
 }
 textarea, input {
   display: block;
   width: 100%;
   background-color: white;
+  color: red;
 }
 input {
   height: 36px;
@@ -35,10 +36,12 @@ textarea {
 h1 {
   font-family: 'Times New Roman', Times, serif;
   color: red;
+  font-size: 24px;
   }
 h2 {
   font-family: 'Times New Roman', Times, serif;
   color: white;
+  font-size: 18px;
 }
 button {
 color: red;

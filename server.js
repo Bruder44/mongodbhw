@@ -10,7 +10,7 @@ var cheerio = require("cheerio");
 // Require models
 var db = require("./models");
 // Set port
-var PORT = 8000;
+var PORT = process.env.PORT || 3030;
 
 // Setup Express
 var app = express();
@@ -28,7 +28,6 @@ app.use(express.static("public"));
 //mongoose.connect("mongodb://localhost/ArticlesDB");
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ArticlesDB";
 // Routing
-mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 // GET route for WorldCupSite
 app.get("/scrape", function(req, res) {
@@ -48,7 +47,7 @@ app.get("/scrape", function(req, res) {
       result.link = $(this).children("a").attr("href");
     
     
-    console.log(results);
+    console.log(result);
 
       // Create a new Article using the `result` object built from scraping
       db.ArticlesDB.create(result)
@@ -112,7 +111,7 @@ app.post("/articles/:id", function(req, res) {
   // Creates a new note and passes it through the req.body into the entry
   db.Note.create(req.body)
     .then(function(dbNote) {
-      return db.ArticlesDB.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+      return db.ArticlesDB.findOneAndUpdate({ _id: req.params.id }, { Note: dbNote._id }, { new: true });
     })
     .then(function(ArticlesDB) {
       // After successfully updating an Article, this send it back to the client
