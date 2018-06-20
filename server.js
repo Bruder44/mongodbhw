@@ -29,6 +29,7 @@ app.use(express.static("public"));
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ArticlesDB";
 // Routing
 mongoose.connect(MONGODB_URI);
+mongoose.Promise = Promise;
 // GET route for WorldCupSite
 app.get("/scrape", function(req, res) {
 
