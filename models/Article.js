@@ -23,7 +23,11 @@ var ArticleSchema = new Schema({
     ref: "Note"
   }
 });
+import { Schema } from "mongoose";
 
+const Schema = mongoose.Schema;
+
+const teamSchema = new Schema
 // This creates our model from the above schema, using mongoose schema model method
 var ArticlesDB = mongoose.model("Article", ArticleSchema);
 

@@ -15,7 +15,7 @@ var PORT = process.env.PORT || 3030;
 // Setup Express
 var app = express();
 
-// Configure middleware
+
 
 // For logging requests
 app.use(logger("dev"));
@@ -23,7 +23,7 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 // Makes the public folder as a static directory
 app.use(express.static("public"));
-
+// Configure middleware
 // Connects to the Mongo DB
 //mongoose.connect("mongodb://localhost/ArticlesDB");
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ArticlesDB";
